@@ -41,7 +41,7 @@
 
     <div class="title-block" aria-label="Drawing title block">
       <div class="tb-row"><span class="tb-label">Name</span><span class="tb-value">Taylor Treece</span></div>
-      <div class="tb-row"><span class="tb-label">Email</span><span class="tb-value"><a href="mailto:taylortreece.dev@outlook.com" style="color:var(--paper); text-decoration:none;">taylortreece.dev@outlook.com</a></span></div>
+      <div class="tb-row"><span class="tb-label">Email</span><span class="tb-value"><a href="mailto:taylor@taylortreece.dev" style="color:var(--paper); text-decoration:none;">taylor@taylortreece.dev</a></span></div>
       <div class="tb-row"><span class="tb-label">LinkedIn</span><span class="tb-value"><a href="https://www.linkedin.com/in/taylor-treece-dev/" target="_blank" rel="noopener noreferrer" style="color:var(--paper); text-decoration:none;">/in/taylor-treece-dev</a></span></div>
       <div class="tb-row"><span class="tb-label">Location</span><span class="tb-value">Hattiesburg, MS</span></div>
       <div class="tb-row"><span class="tb-label">Sheet</span><span class="tb-value">A-05 of A-05</span></div>
@@ -49,12 +49,12 @@
   </section>
 
   <!-- FORM -->
-  <section id="contact-form" class="sheet">
+  <section id="send-message" class="sheet">
     <p class="eyebrow">GENERAL NOTES &nbsp;/&nbsp; SEND A MESSAGE</p>
     <h2 class="display h2">Send a message</h2>
     <p class="lede" style="margin-bottom:36px;">Fill this out and it'll open a message in your email client, addressed and ready to send.</p>
 
-    <form action="mailto:taylortreece.dev@outlook.com" method="post" enctype="text/plain" class="contact-form">
+    <form action="https://formspree.io/f/xlgqoaeo" method="POST" class="contact-form" id="contact-form">
       <div class="field">
         <label for="name">Name</label>
         <input type="text" id="name" name="Name" required>
@@ -71,7 +71,7 @@
         <label for="message">Message</label>
         <textarea id="message" name="Message" rows="6" required></textarea>
       </div>
-      <button type="submit" class="submit-btn">Open in email <span aria-hidden="true">→</span></button>
+      <button type="submit" class="submit-btn">Send message <span aria-hidden="true">→</span></button>
     </form>
   </section>
 

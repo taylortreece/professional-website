@@ -1,5 +1,53 @@
 document.getElementById('year').textContent = new Date().getFullYear();
 
+// contact form — submit via fetch so the page never redirects or reloads
+const contactForm = document.getElementById('contact-form');
+
+if (contactForm) {
+  contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const submitBtn = contactForm.querySelector('.submit-btn');
+    const originalLabel = submitBtn.innerHTML;
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
+
+    const showMessage = (text, isError) => {
+      let msg = document.getElementById('form-message');
+      if (!msg) {
+        msg = document.createElement('p');
+        msg.id = 'form-message';
+        msg.style.marginTop = '16px';
+        msg.style.fontFamily = "'IBM Plex Mono', monospace";
+        msg.style.fontSize = '14px';
+        contactForm.insertAdjacentElement('afterend', msg);
+      }
+      msg.textContent = text;
+      msg.style.color = isError ? '#FF6B6B' : 'var(--signal)';
+    };
+
+    try {
+      const response = await fetch(contactForm.action, {
+        method: 'POST',
+        body: new FormData(contactForm),
+        headers: { Accept: 'application/json' },
+      });
+
+      if (response.ok) {
+        contactForm.reset();
+        showMessage("Message sent. Thanks! I'll get back to you soon.", false);
+      } else {
+        showMessage('Something went wrong sending that. Try again, or email me directly.', true);
+      }
+    } catch (err) {
+      showMessage('Something went wrong sending that. Try again, or email me directly.', true);
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = originalLabel;
+    }
+  });
+}
+
 // mobile nav toggle
 const navToggle = document.getElementById('nav-toggle');
 const primaryNav = document.getElementById('primary-nav');
