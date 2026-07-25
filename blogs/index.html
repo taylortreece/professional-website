@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Field Notes — Taylor Treece</title>
+<meta name="description" content="Field Notes — writing from Taylor Treece on enterprise architecture, systems integration, and AI-driven automation.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/style.css">
+</head>
+<body>
+
+<div class="gridpaper" aria-hidden="true"></div>
+
+<header class="site-head">
+  <a href="../index.html#overview" class="mark" aria-label="Taylor Treece, home">
+    <img src="../images/logo.png" alt="Taylor Treece" class="mark-logo">
+  </a>
+  <nav class="sheet-nav" id="primary-nav" aria-label="Primary">
+    <a href="../index.html#overview"><span class="sheet-no">U1</span>Overview</a>
+    <a href="../index.html#notes"><span class="sheet-no">U2</span>About</a>
+    <a href="../index.html#log"><span class="sheet-no">U3</span>Log</a>
+    <a href="../index.html#legend"><span class="sheet-no">U4</span>Legend</a>
+    <a href="../index.html#contact"><span class="sheet-no">U5</span>Contact</a>
+    <a href="index.html" style="color:var(--paper)"><span class="sheet-no">J1</span>Blog</a>
+  </nav>
+  <button class="nav-toggle" id="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-nav">
+    <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+  </button>
+</header>
+
+<main>
+
+  <!-- B-01 FIELD NOTES -->
+  <section id="field-notes" class="sheet sheet-overview">
+    <p class="eyebrow">SHEET B-01 &nbsp;/&nbsp; FIELD NOTES</p>
+    <h1 class="display h2" style="font-size:clamp(36px, 6vw, 58px);">Field Notes</h1>
+    <p class="lede">Notes from the work itself — integrations that didn't go as planned, tools worth knowing about, and whatever else is worth writing down after a project wraps. New entries get filed here as sheets, same as everything else on this site.</p>
+  </section>
+
+  <!-- ENTRY LOG -->
+  <section id="entries" class="sheet">
+    <p class="eyebrow">SHEET B-01 &nbsp;/&nbsp; ENTRY LOG</p>
+    <h2 class="display h2">Entries</h2>
+
+    <div class="log-table" role="table">
+      <div class="log-head" role="row">
+        <span role="columnheader">Rev</span>
+        <span role="columnheader">Date</span>
+        <span role="columnheader">Entry</span>
+        <span role="columnheader">Description</span>
+      </div>
+
+      <!--
+        TEMPLATE FOR A NEW ENTRY — copy this block, fill it in, and place it
+        above this comment so the newest entry stays at the top of the log.
+
+      <div class="log-row" role="row">
+        <span class="log-rev" role="cell">01</span>
+        <span class="log-date" role="cell">Mon YYYY</span>
+        <span class="log-role" role="cell">
+          <strong><a href="entry-slug.html" style="color:var(--paper); text-decoration:none;">Entry Title</a></strong>
+        </span>
+        <span class="log-desc" role="cell">
+          <p style="margin:0; color:var(--paper); opacity:0.9; font-size:15px;">One or two sentence summary of the entry.</p>
+        </span>
+      </div>
+      -->
+
+      <div class="log-row" role="row">
+        <span class="log-rev" role="cell">01</span>
+        <span class="log-date" role="cell">Jul 2026</span>
+        <span class="log-role" role="cell">
+          <strong><a href="complexity-and-cx.html" style="color:var(--paper); text-decoration:none;">What Building Overly Complex Twilio Flex Solutions Taught Me About CX</a></strong>
+        </span>
+        <span class="log-desc" role="cell">
+          <p style="margin:0; color:var(--paper); opacity:0.9; font-size:15px;">Over-engineered IVRs, cluttered agent desktops, and the ten-second test that fixed both.</p>
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- BACK TO HOME -->
+  <section class="sheet no-via" style="padding-top:56px; padding-bottom:56px; text-align:center;">
+    <a href="../index.html#overview" class="stamp-link" style="display:inline-flex; align-items:center; gap:10px; font-family:'IBM Plex Mono', monospace; font-size:14px; letter-spacing:0.04em; text-decoration:none; color:var(--muted);">
+      <span aria-hidden="true">←</span> Back to A-01 / Overview
+    </a>
+  </section>
+
+</main>
+
+<footer class="site-foot">
+  <p>© <span id="year"></span> Taylor Treece</p>
+  <p class="end-of-set">Sheet B-01</p>
+</footer>
+
+<script src="../js/main.js"></script>
+</body>
+</html>
