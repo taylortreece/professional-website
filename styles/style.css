@@ -239,6 +239,13 @@ a { color: inherit; }
   margin-right: auto;
 }
 
+/* General Notes reads better left-aligned rather than centered,
+   unlike Overview and Contact which stay centered */
+#notes .sheet-prose {
+  margin-left: 0;
+  margin-right: auto;
+}
+
 .sheet-overview {
   padding-top: 120px;
   padding-bottom: 120px;
@@ -289,6 +296,7 @@ h1.display {
   display: flex;
   gap: 24px;
   align-items: stretch;
+  justify-content: center;
   margin-top: 64px;
   flex-wrap: wrap;
 }
