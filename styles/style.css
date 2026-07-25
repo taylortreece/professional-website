@@ -219,10 +219,24 @@ a { color: inherit; }
 /* ---------------- sheet sections ---------------- */
 
 .sheet {
+  box-sizing: border-box;
+  width: 100%;
   max-width: 980px;
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
   padding: 96px 48px;
   border-bottom: 1px solid var(--line);
+}
+
+/* Prose-heavy sections (a headline plus a paragraph, no table/grid) read
+   better narrower than the full sheet width. This wraps just the inner
+   content in a narrower, centered container — the outer .sheet section
+   itself (and its horizontal divider line) stays full width, matching
+   every other section. */
+.sheet-prose {
+  max-width: 780px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .sheet-overview {
@@ -264,7 +278,6 @@ h1.display {
 }
 
 .lede {
-  max-width: 62ch;
   font-size: 18px;
   color: var(--paper);
   opacity: 0.92;
@@ -336,7 +349,6 @@ h1.display {
 /* ---------------- notes (about) ---------------- */
 
 .notes-list {
-  max-width: 68ch;
   padding-left: 24px;
   margin: 0;
   display: flex;
@@ -577,6 +589,12 @@ h1.display {
 .site-foot p { margin: 0; }
 
 /* ---------------- responsive ---------------- */
+
+@media (min-width: 1600px) {
+  .sheet {
+    max-width: 1300px;
+  }
+}
 
 @media (max-width: 800px) {
   body {
