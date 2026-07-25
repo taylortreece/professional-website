@@ -35,7 +35,7 @@ if (contactForm) {
 
       if (response.ok) {
         contactForm.reset();
-        showMessage("Message sent. Thanks! I'll get back to you soon.", false);
+        showMessage("Message sent — thanks, I'll get back to you soon.", false);
       } else {
         showMessage('Something went wrong sending that. Try again, or email me directly.', true);
       }
@@ -66,6 +66,8 @@ if (navToggle && primaryNav) {
     });
   });
 }
+
+
 
 // highlight the current sheet in nav as you scroll
 const sections = document.querySelectorAll('main .sheet');
