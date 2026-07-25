@@ -56,9 +56,11 @@
       <!--
         TEMPLATE FOR A NEW ENTRY — copy this block, fill it in, and place it
         above this comment so the newest entry stays at the top of the log.
-        New posts now live at blogs/your-slug/index.html (a folder, not a
-        flat .html file) so the URL stays extension-free — see
-        blogs/complexity-and-cx/index.html for a working example to copy.
+        New posts are flat files: blogs/your-slug.html. Thanks to the
+        .nojekyll file at the repo root, GitHub Pages serves that same file
+        at both /blogs/your-slug.html and /blogs/your-slug automatically —
+        link to it here without the .html. See blogs/complexity-and-cx.html
+        for a working example to copy.
 
       <div class="log-row" role="row">
         <span class="log-rev" role="cell">01</span>
@@ -76,7 +78,7 @@
         <span class="log-rev" role="cell">01</span>
         <span class="log-date" role="cell">Jul 2026</span>
         <span class="log-role" role="cell">
-          <strong><a href="complexity-and-cx/" style="color:var(--paper); text-decoration:none;">What Building Overly Complex Twilio Flex Solutions Taught Me About CX</a></strong>
+          <strong><a href="complexity-and-cx" style="color:var(--paper); text-decoration:none;">What Building Overly Complex Twilio Flex Solutions Taught Me About CX</a></strong>
         </span>
         <span class="log-desc" role="cell">
           <p style="margin:0; color:var(--paper); opacity:0.9; font-size:15px;">Over-engineered IVRs, cluttered agent desktops, and the ten-second test that fixed both.</p>

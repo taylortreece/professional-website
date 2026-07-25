@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What Building Overly Complex Twilio Flex Solutions Taught Me About CX — Taylor Treece</title>
+<meta name="description" content="A field note from Taylor Treece on over-engineering contact center solutions on Twilio Flex, and the ten-second test that fixed it.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/style.css">
+</head>
+<body>
+
+<div class="gridpaper" aria-hidden="true"></div>
+
+<header class="site-head">
+  <a href="../index.html#overview" class="mark" aria-label="Taylor Treece, home">
+    <img src="../images/logo.png" alt="Taylor Treece" class="mark-logo">
+  </a>
+  <nav class="sheet-nav" id="primary-nav" aria-label="Primary">
+    <a href="../index.html#overview"><span class="sheet-no">U1</span>Overview</a>
+    <a href="../index.html#notes"><span class="sheet-no">U2</span>About</a>
+    <a href="../index.html#log"><span class="sheet-no">U3</span>Log</a>
+    <a href="../index.html#legend"><span class="sheet-no">U4</span>Legend</a>
+    <a href="../index.html#contact"><span class="sheet-no">U5</span>Contact</a>
+    <a href="/blogs/" style="color:var(--paper)"><span class="sheet-no">J1</span>Blog</a>
+  </nav>
+  <button class="nav-toggle" id="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-nav">
+    <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+  </button>
+</header>
+
+<main>
+
+  <!-- B-02 ENTRY -->
+  <section class="sheet sheet-overview no-via">
+    <p class="eyebrow">SHEET B-02 &nbsp;/&nbsp; FIELD NOTES &nbsp;/&nbsp; ENTRY 01</p>
+    <h1 class="display h2" style="font-size:clamp(30px, 4.5vw, 48px); max-width:20ch;">What Building Overly Complex Twilio Flex Solutions Taught Me About CX</h1>
+    <p class="role-line">Field Notes — Waterfield Technologies</p>
+  </section>
+
+  <!-- ARTICLE BODY -->
+  <section class="sheet no-via">
+    <div class="notes-list" style="padding-left:0; max-width:70ch; display:flex; flex-direction:column; gap:22px;">
+      <p class="drop-cap">When I was at Waterfield Technologies, I built some genuinely impressive contact center environments on Twilio Flex. I also built some that were way too complicated for their own good.</p>
+
+      <p>The IVRs were the first place I learned this lesson. Early on I'd build out these intricate call flows — nested menus, conditional routing logic, edge case handling for scenarios that might happen once a year. The architecture was clean. The logic was sound. And customers would demo it and love it, right up until their agents actually had to use it.</p>
+
+      <p>The agent desktop UI was the same story. I'd build custom Flex components that surfaced all kinds of contextual data — call history, CRM records, sentiment indicators, previous interaction summaries. Useful information. But I'd pack it all into one screen because I could, and agents would sit there overwhelmed trying to figure out what to look at while a customer was waiting on the line.</p>
+
+      <p>The thing nobody tells you when you're building CX solutions is that the person using it most is usually not the person who bought it. The VP of Customer Experience signs the contract. The frontline agent lives with what you built eight hours a day.</p>
+
+      <p>The best environments I deployed were the ones where I forced myself to ask one question before adding anything: does this make the agent's job easier or harder in the first ten seconds of a call? If the answer wasn't clearly easier, it didn't make the cut.</p>
+
+      <p>Complexity is easy to build. Restraint is harder. And in contact center design, restraint is almost always what the customer actually needed.</p>
+    </div>
+  </section>
+
+  <!-- NAV BETWEEN ENTRIES -->
+  <section class="sheet no-via" style="padding-top:56px; padding-bottom:56px;">
+    <a href="/blogs/" class="stamp-link" style="display:inline-flex; align-items:center; gap:10px; font-family:'IBM Plex Mono', monospace; font-size:14px; letter-spacing:0.04em; text-decoration:none; color:var(--muted);">
+      <span aria-hidden="true">←</span> Back to B-01 / Field Notes
+    </a>
+  </section>
+
+  <!-- BACK TO HOME -->
+  <section class="sheet no-via" style="padding-top:0; padding-bottom:56px; text-align:center;">
+    <a href="../index.html#overview" class="stamp-link" style="display:inline-flex; align-items:center; gap:10px; font-family:'IBM Plex Mono', monospace; font-size:14px; letter-spacing:0.04em; text-decoration:none; color:var(--muted);">
+      <span aria-hidden="true">←</span> Back to A-01 / Overview
+    </a>
+  </section>
+
+</main>
+
+<footer class="site-foot">
+  <p>© <span id="year"></span> Taylor Treece</p>
+  <p class="end-of-set">Sheet B-02</p>
+</footer>
+
+<script src="../js/main.js"></script>
+</body>
+</html>
