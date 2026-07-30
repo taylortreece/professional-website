@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>What Building Overly Complex Twilio Flex Solutions Taught Me About CX | Taylor Treece</title>
+<title>Scope Is the Design Work | Taylor Treece</title>
 <link rel="icon" type="image/png" href="../images/favicon.png">
-<meta name="description" content="A field note from Taylor Treece on over-engineering contact center solutions on Twilio Flex, and the ten-second test that fixed it.">
+<meta name="description" content="A field note from Taylor Treece on discovering real scope, holding it against reasonable pressure, and the delivery practices that protect both simplicity and ROI in CCaaS work.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -38,7 +38,7 @@
   <section class="sheet sheet-overview no-via">
     <p class="eyebrow">SHEET B-02 &nbsp;/&nbsp; FIELD NOTES &nbsp;/&nbsp; ENTRY 01</p>
     <div class="sheet-prose">
-    <h1 class="display h2" style="font-size:clamp(30px, 4.5vw, 48px); max-width:20ch;">What Building Overly Complex Twilio Flex Solutions Taught Me About CX</h1>
+    <h1 class="display h2" style="font-size:clamp(30px, 4.5vw, 48px); max-width:20ch;">Scope Is the Design Work</h1>
     <p class="role-line">Field Notes | Waterfield Technologies</p>
     </div>
   </section>
@@ -47,17 +47,25 @@
   <section class="sheet no-via">
     <div class="sheet-prose">
     <div class="notes-list" style="padding-left:0; display:flex; flex-direction:column; gap:22px;">
-      <p class="drop-cap">When I was at Waterfield Technologies, I built some genuinely impressive contact center environments on Twilio Flex. I also built some that were way too complicated for their own good.</p>
+      <p class="drop-cap">Building to scope is table stakes. Any competent delivery team can execute a signed SOW. The harder skill, and the one that decides whether an engagement is actually good, is shaping that scope in the first place and then holding it while a dozen reasonable people try to grow it.</p>
 
-      <p>The IVRs were the first place I learned this lesson. Early on I'd build out these intricate call flows: nested menus, conditional routing logic, edge case handling for scenarios that might happen once a year. The architecture was clean. The logic was sound. And customers would demo it and love it, right up until their agents actually had to use it.</p>
+      <p>I spent a year at Waterfield Technologies on both halves of that: discovery sessions, SOWs, estimates and pricing models, then the build itself. Studio flows, TaskRouter configuration, custom Flex plugins, the integration layer underneath. Twelve deployments, more than 80% of which went on to a follow-on phase. The ones that went well were not the ones where I built the most.</p>
 
-      <p>The agent desktop UI was the same story. I'd build custom Flex components that surfaced all kinds of contextual data: call history, CRM records, sentiment indicators, previous interaction summaries. Useful information. But I'd pack it all into one screen because I could, and agents would sit there overwhelmed trying to figure out what to look at while a customer was waiting on the line.</p>
+      <p>Scope discovery is not a requirements-gathering meeting. Ask a stakeholder what they want and you get a wish list assembled from vendor decks and whatever frustrated them last quarter. This is also where you get the opportunity to teach the stakeholder about problems they have been unaware of in their own business. You are the expert, and they are looking to you. Ask a supervisor to walk you through their three highest-volume interaction types end to end and you get the actual operation: where agents hesitate, which panels they ignore, which numbers they check every morning, which reports nobody has opened since onboarding. That second conversation is the one that should shape the SOW, because a document built from a wish list specifies features while the operation needs a workflow.</p>
 
-      <p>The thing nobody tells you when you're building CX solutions is that the person using it most is usually not the person who bought it. The VP of Customer Experience signs the contract. The frontline agent lives with what you built eight hours a day.</p>
+      <p>Once it is signed, the rest of the job is holding the line, and there are two reasons to do that. They are worth stating separately because they persuade different people in the room. The first is simplicity: every additional component is another thing to maintain, another thing that breaks when a queue gets renamed, another artifact whose definition of "handled" quietly diverges from the platform's. The second is ROI: hours spent on work that does not move an operational number are hours the client paid for and did not need. Their value drops and your margin drops at the same time.</p>
 
-      <p>The best environments I deployed were the ones where I forced myself to ask one question before adding anything: does this make the agent's job easier or harder in the first ten seconds of a call? If the answer wasn't clearly easier, it didn't make the cut.</p>
+      <p>In practice, holding scope starts with reaching for code earlier than feels natural. A Studio flow can hand off at nearly any node: a Function, a webhook, whatever service you point it at. When a routing decision got complicated, the path of least resistance was often another menu or some intermediate step that pushed work onto the caller or the agent. Menu depth is usually a symptom of decisioning that belonged behind the flow. Let the code do the ANI lookup, query the CRM for open cases, check account state, and route on what you already know. Every level resolved programmatically is a level nobody has to navigate, mis-key, abandon, or zero out of into a queue that was never scoped to receive it. That is also how tailored work stays contained: the tailoring lives in a Function you can read in one sitting instead of twelve more widgets on a canvas.</p>
 
-      <p>Complexity is easy to build. Restraint is harder. And in contact center design, restraint is almost always what the customer actually needed.</p>
+      <p>Which is the broader point about these platforms. Flex, Studio, and every other CCaaS builder ship with a drag-and-drop canvas, and it is easy to read that as permission to stop thinking like an engineer. The canvas changes the syntax, not the rules. Two practices carry most of the weight. Do not take five steps to do something that takes one: a widget chain that fetches a value, writes it to flow variables, hands it to a subflow, then re-reads it downstream is four places to break and four places the next consultant has to trace. And keep a single source of truth. The pattern I hit most often was the same customer attribute pulled fresh at three separate points, or maintained in both the CRM and a Flex worker attribute, or recalculated on every task instead of resolved once and passed forward. Duplicated state drifts whether it lives in a repository or on a canvas, and once it drifts nobody can tell you which copy is authoritative.</p>
+
+      <p>Reporting is where this gets expensive fastest. Nearly every engagement produced a list of custom reports and dashboards longer than what the operation ended up using. Some of it is necessary. A large share is already in native historical reporting or derivable from data the platform captures anyway, so building it means standing up a second pipeline for numbers that already exist somewhere authoritative. Same single-source problem, much larger surface area, and it eats exactly the hours that should have gone to routing or integration. Scoping a report out is rarely telling a client no. Most of the time it is pointing them at the thing that already answers the question.</p>
+
+      <p>None of this works if you sit on it. When something starts growing past what was scoped, raise it the day you notice, not the week before UAT. Tell the PM the estimate is drifting and why. Tell the implementation consultant what the flow is turning into. Tell the client what a request costs in hours and what it displaces, plainly, because most of the time they are asking for an outcome and are perfectly willing to reach it a cheaper way. The engagements that went sideways on me went sideways quietly. One I stepped into had drifted far enough from what the client actually needed that it was close to being lost. A fast round of re-discovery and a redesign brought it back, and it ran two more phases. That was recoverable, but only because somebody finally said something out loud.</p>
+
+      <p>When a request is legitimate but does not belong in this phase, put it in the next one. Phasing is not a stalling tactic. It is how a go-live date stays credible while the request still gets taken seriously. It also sorts real needs from enthusiasm: a surprising number of must-haves quietly fall off the phase-two list once the operation has lived with the phase-one build for a month.</p>
+
+      <p>The connective tissue in all of it is building intuitively and asking questions when the intuition does not fire. If a flow is getting hard to explain out loud, it is too complicated. If you cannot name which operational number a component moves, go ask someone who can. If you are guessing at how a workflow runs, you are guessing at scope, and that guess surfaces later as either a change request or an agent quietly working around your build eight hours a day. The instinct to ask one more question in discovery is worth more than any amount of build speed after it.</p>
     </div>
     </div>
   </section>
