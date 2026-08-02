@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Building a Toolbox on Thirty Years of On-Prem | Taylor Treece</title>
+<link rel="icon" type="image/png" href="../images/favicon.png">
+<meta name="description" content="A field note from Taylor Treece on building an on-prem internal tools platform with Blazor, ASP.NET, and SQL Server, designed to move to the cloud when the institution was ready.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Building a Toolbox on Thirty Years of On-Prem">
+<meta property="og:description" content="Blazor, ASP.NET, and SQL Server on prem, built to move when the institution was ready. Why vendor independence is a prerequisite for automation.">
+<meta property="og:url" content="https://taylortreece.dev/blogs/internal-toolbox">
+<meta property="og:image" content="https://taylortreece.dev/images/blog-images/on-prem-toolbox.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Building a Toolbox on Thirty Years of On-Prem">
+<meta name="twitter:description" content="Blazor, ASP.NET, and SQL Server on prem, built to move when the institution was ready. Why vendor independence is a prerequisite for automation.">
+<meta name="twitter:image" content="https://taylortreece.dev/images/blog-images/on-prem-toolbox.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/style.css">
+</head>
+<body>
+
+<div class="gridpaper" aria-hidden="true"></div>
+
+<header class="site-head">
+  <a href="/#overview" class="mark" aria-label="Taylor Treece, home">
+    <img src="../images/logo.png" alt="Taylor Treece" class="mark-logo">
+  </a>
+  <nav class="sheet-nav" id="primary-nav" aria-label="Primary">
+    <a href="../index.html#overview"><span class="sheet-no">U1</span>Overview</a>
+    <a href="../index.html#notes"><span class="sheet-no">U2</span>About</a>
+    <a href="../index.html#log"><span class="sheet-no">U3</span>Log</a>
+    <a href="../index.html#legend"><span class="sheet-no">U4</span>Legend</a>
+    <a href="../index.html#contact"><span class="sheet-no">U5</span>Contact</a>
+    <a href="/blogs/" style="color:var(--paper)"><span class="sheet-no">J1</span>Blog</a>
+  </nav>
+  <button class="nav-toggle" id="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-nav">
+    <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+  </button>
+</header>
+
+<main>
+
+  <!-- B-03 ENTRY -->
+  <section class="sheet sheet-overview no-via">
+    <p class="eyebrow">SHEET B-03 &nbsp;/&nbsp; FIELD NOTES &nbsp;/&nbsp; ENTRY 02</p>
+    <div class="sheet-prose">
+    <h1 class="display h2" style="font-size:clamp(30px, 4.5vw, 48px); max-width:20ch;">Building a Toolbox on Thirty Years of On-Prem</h1>
+    <p class="role-line">Field Notes | Higher Education</p>
+
+    <figure class="post-hero">
+      <img src="/images/blog-images/on-prem-toolbox.png" alt="Illustration of older office and classroom technology: a floppy disk, pencil sharpener, chalkboard, overhead projector, and a CRT desktop computer">
+    </figure>
+    </div>
+  </section>
+
+  <!-- ARTICLE BODY -->
+  <section class="sheet no-via">
+    <div class="sheet-prose">
+    <div class="notes-list" style="padding-left:0; display:flex; flex-direction:column; gap:22px;">
+      <p class="drop-cap">A lot of institutions are running on a Student Information System that predates most of the people using it. The one I inherited had been in place for decades, and everything built since had been built the way you built things at the time: inside the vendor platform, with custom tables added alongside the vendor's own, on servers in a room down the hall. Years of one-off tools, reports, and utilities that departments used daily and that worked.</p>
+
+      <p>That is not a story about anyone making bad calls. It is a story about what was available. When those decisions were made there was no in-house web development practice to build against, no cloud to move to, and no reason to think the vendor platform was a risky place to put things. Each layer got added on top of the one before it because that was the surface that existed. Anyone who has worked in higher ed IT, or in any institution older than the software it runs on, has watched the same accumulation happen.</p>
+
+      <p>What had changed was the horizon. A cloud SIS migration was coming. Custom tables sitting in a vendor's database and tools living inside a vendor's interface do not travel well, and the closer that migration got, the more expensive they would be to unwind. The question was not whether to deal with it. It was whether that work would happen under a go-live deadline or ahead of one.</p>
+
+      <p>So I built the toolbox. Blazor front end, ASP.NET Web APIs behind it, SQL Server underneath, authorization driven by existing directory group membership. All of it running on prem, because that is where the institution was, and all of it built so that on prem was a deployment target rather than an assumption baked into the code.</p>
+
+      <p>That last part drove most of the technical decisions. The front end talks to APIs over HTTP rather than reaching into a database directly. Environment specifics live in configuration rather than in the code. Data access goes through the API layer instead of being scattered across the UI. None of that is exotic, and all of it is ordinary practice anywhere that has been doing web development for a while. It mattered here because the same application that runs on a server down the hall can run somewhere else later without being rewritten, which meant the institution would not have to make the cloud decision and the rebuild decision at the same time.</p>
+
+      <p>I split the API layer in two: one for internal tooling, one for vendor integrations. Those are different trust boundaries and they earn different surfaces. Serving both from a single API with route-level filtering would have saved setup time and cost more later, because every endpoint added afterward would have to correctly identify which side of the boundary it belonged on. Two separate APIs makes that boundary structural rather than something a developer has to remember, and the separation is enforced by what exists on each surface instead of by convention.</p>
+
+      <p>Authorization leans on the directory the institution already ran. Group membership determines which tools a person sees, with separate administrative groups layered on top. The useful consequence is that access is not managed inside the application at all. It is managed where it already was, by the people who already did it. Granting someone access to a department's tooling is a group membership change rather than a ticket to my team, and access ends when their account does. Homegrown permission systems usually get the granting right and the revoking wrong.</p>
+
+      <p>SQL Server holds everything, but in a database of our own rather than as additional tables inside the vendor's. That distinction is most of the point. Same data, same server room, but on a footprint the institution could back up, migrate, or restructure on its own schedule.</p>
+
+      <p>The other decision I would make again on day one was saving the front end and the API as templates in source control. A new front end or a new API starts as a fork instead of a blank project. The time savings are real but secondary. What matters is that the tenth thing built on the platform has the same wiring, the same structure, and the same conventions as the first, whether or not I am the one building it. Platforms decay when every addition is a slightly different reading of the pattern, and making the pattern forkable is the cheapest defense against that I know.</p>
+
+      <p>Two goals drove the whole effort. The first was tools that belong to the institution: independent of any one vendor's platform, able to survive a migration, changeable on our schedule. The second was laying groundwork for hyperautomation, and the first is a prerequisite for the second. Automating across systems is difficult when the automation logic is a tenant inside one of them. Once tools sit on infrastructure the institution controls, with its own APIs and its own data layer, automation becomes a matter of composing things you already own.</p>
+
+      <p>This was never a rewrite-everything project and it should not have been. Those older tools work, and people depend on them. The toolbox started with what hurt most and grew from there. What changed immediately was not how much had moved. It was that there was finally somewhere else for the next tool to go.</p>
+    </div>
+    </div>
+  </section>
+
+  <!-- NAV BETWEEN ENTRIES -->
+  <section class="sheet no-via" style="padding-top:56px; padding-bottom:56px;">
+    <a href="/blogs/" class="stamp-link" style="display:inline-flex; align-items:center; gap:10px; font-family:'IBM Plex Mono', monospace; font-size:14px; letter-spacing:0.04em; text-decoration:none; color:var(--muted);">
+      <span aria-hidden="true">←</span> Back to B-01 / Field Notes
+    </a>
+  </section>
+
+  <!-- BACK TO HOME -->
+  <section class="sheet no-via" style="padding-top:0; padding-bottom:56px; text-align:center;">
+    <a href="../index.html#overview" class="stamp-link" style="display:inline-flex; align-items:center; gap:10px; font-family:'IBM Plex Mono', monospace; font-size:14px; letter-spacing:0.04em; text-decoration:none; color:var(--muted);">
+      <span aria-hidden="true">←</span> Back to A-01 / Overview
+    </a>
+  </section>
+
+</main>
+
+<footer class="site-foot">
+  <p>© <span id="year"></span> Taylor Treece</p>
+  <p class="end-of-set">Sheet B-03</p>
+</footer>
+
+<script src="../js/main.js"></script>
+</body>
+</html>

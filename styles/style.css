@@ -118,6 +118,20 @@ main::before {
   color: var(--accent);
 }
 
+/* ---------------- blog post header image ---------------- */
+
+.post-hero {
+  margin: 32px 0 0;
+  border: 1px solid var(--line);
+  line-height: 0;
+}
+
+.post-hero img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
 @media (max-width: 800px) {
   main::before,
   .sheet::before {

@@ -6,6 +6,17 @@
 <title>Scope Is the Design Work | Taylor Treece</title>
 <link rel="icon" type="image/png" href="../images/favicon.png">
 <meta name="description" content="A field note from Taylor Treece on discovering real scope, holding it against reasonable pressure, and the delivery practices that protect both simplicity and ROI in CCaaS work.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Scope Is the Design Work">
+<meta property="og:description" content="Finding real scope in discovery, holding it against reasonable pressure, and why simplicity and ROI are two separate arguments.">
+<meta property="og:url" content="https://taylortreece.dev/blogs/complexity-and-cx">
+<meta property="og:image" content="https://taylortreece.dev/images/blog-images/on-prem-toolbox.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Scope Is the Design Work">
+<meta name="twitter:description" content="Finding real scope in discovery, holding it against reasonable pressure, and why simplicity and ROI are two separate arguments.">
+<meta name="twitter:image" content="https://taylortreece.dev/images/blog-images/on-prem-toolbox.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -40,6 +51,10 @@
     <div class="sheet-prose">
     <h1 class="display h2" style="font-size:clamp(30px, 4.5vw, 48px); max-width:20ch;">Scope Is the Design Work</h1>
     <p class="role-line">Field Notes | Waterfield Technologies</p>
+
+    <figure class="post-hero">
+      <img src="/images/blog-images/complexity-and-cs.jpeg" alt="Illustration of older office and classroom technology: a floppy disk, pencil sharpener, chalkboard, overhead projector, and a CRT desktop computer">
+    </figure>
     </div>
   </section>
 
@@ -47,11 +62,11 @@
   <section class="sheet no-via">
     <div class="sheet-prose">
     <div class="notes-list" style="padding-left:0; display:flex; flex-direction:column; gap:22px;">
-      <p class="drop-cap">Building to scope is table stakes. Any competent delivery team can execute a signed SOW that was <i>reasonably</i> built. I say reasonably because we've all seen excruitiating deadlines and unintelligable requirements. Those are always fun. The harder skill, and the one that decides whether an engagement is actually good, is shaping that scope in the first place and then holding it while a dozen reasonable people try to grow it.</p>
+      <p class="drop-cap">Building to scope is table stakes. Any competent delivery team can execute a signed SOW. The harder skill, and the one that decides whether an engagement is actually good, is shaping that scope in the first place and then holding it while a dozen reasonable people try to grow it.</p>
 
-      <p>I spent well over a year at Waterfield Technologies on both sides of that situation: discovery sessions, SOWs, estimates and pricing models, then the build itself. Studio flows, TaskRouter configuration, custom Flex plugins, the integration layer underneath. Twelve deployments, more than 80% of which went on to a follow-on phase. The ones that went well were not the ones where I built the most. A little tidbit from the rest of this blog, the best builds were the ones where the client felt the most heard in my opinion. I actually had some really solid, collaborative relationships and I think the trust associated with that kind of environment why people kept coming back.</p>
+      <p>I spent a year at Waterfield Technologies on both halves of that: discovery sessions, SOWs, estimates and pricing models, then the build itself. Studio flows, TaskRouter configuration, custom Flex plugins, the integration layer underneath. Twelve deployments, more than 80% of which went on to a follow-on phase. The ones that went well were not the ones where I built the most.</p>
 
-      <p>Scope discovery is not a requirements-gathering meeting. Ask a stakeholder what they want and you get a wish list assembled from vendor decks and whatever frustrated them last quarter. This is also where you get the opportunity to teach the stakeholder about problems they have been unaware of in their own business. You are the expert, and they are looking to you. Ask a supervisor to walk you through their three highest-volume interaction types end to end and you get the actual operation: where agents hesitate, which panels they ignore, which numbers they check every morning, which reports nobody has opened since onboarding. That second conversation is the one that should shape the SOW, because a document built from a wish list specifies features while the operation needs a workflow.</p>
+      <p>Scope discovery is not a requirements-gathering meeting. Ask a stakeholder what they want and you get a wish list assembled from vendor decks and whatever frustrated them last quarter. Ask a supervisor to walk you through their three highest-volume interaction types end to end and you get the actual operation: where agents hesitate, which panels they ignore, which numbers they check every morning, which reports nobody has opened since onboarding. That second conversation is the one that should shape the SOW, because a document built from a wish list specifies features while the operation needs a workflow.</p>
 
       <p>Once it is signed, the rest of the job is holding the line, and there are two reasons to do that. They are worth stating separately because they persuade different people in the room. The first is simplicity: every additional component is another thing to maintain, another thing that breaks when a queue gets renamed, another artifact whose definition of "handled" quietly diverges from the platform's. The second is ROI: hours spent on work that does not move an operational number are hours the client paid for and did not need. Their value drops and your margin drops at the same time.</p>
 
