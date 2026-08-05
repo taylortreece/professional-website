@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What Hyper Automation Looks Like for Everyone | Taylor Treece</title>
+<link rel="icon" type="image/png" href="../images/favicon.png">
+<meta name="description" content="A field note from Taylor Treece on what hyper automation actually looks like when it works, and the four things that have to be true before any of it does.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="What Hyper Automation Looks Like for Everyone">
+<meta property="og:description" content="One automation saves an afternoon. Chained automations change what a department does all day. Here is what that looks like, and what has to be true first.">
+<meta property="og:url" content="https://taylortreece.dev/blogs/hyper-automation">
+<meta property="og:image" content="https://taylortreece.dev/images/blog-images/gnomes.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="What Hyper Automation Looks Like for Everyone">
+<meta name="twitter:description" content="One automation saves an afternoon. Chained automations change what a department does all day. Here is what that looks like, and what has to be true first.">
+<meta name="twitter:image" content="https://taylortreece.dev/images/blog-images/gnomes.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/style.css">
+</head>
+<body>
+
+<div class="gridpaper" aria-hidden="true"></div>
+
+<header class="site-head">
+  <a href="/#overview" class="mark" aria-label="Taylor Treece, home">
+    <img src="../images/logo.png" alt="Taylor Treece" class="mark-logo">
+  </a>
+  <nav class="sheet-nav" id="primary-nav" aria-label="Primary">
+    <a href="../index.html#overview"><span class="sheet-no">U1</span>Overview</a>
+    <a href="../index.html#notes"><span class="sheet-no">U2</span>About</a>
+    <a href="../index.html#log"><span class="sheet-no">U3</span>Log</a>
+    <a href="../index.html#legend"><span class="sheet-no">U4</span>Legend</a>
+    <a href="../index.html#contact"><span class="sheet-no">U5</span>Contact</a>
+    <a href="/blogs/" style="color:var(--paper)"><span class="sheet-no">J1</span>Blog</a>
+  </nav>
+  <button class="nav-toggle" id="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-nav">
+    <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+  </button>
+</header>
+
+<main>
+
+  <!-- B-04 ENTRY -->
+  <section class="sheet sheet-overview no-via">
+    <p class="eyebrow">SHEET B-04 &nbsp;/&nbsp; FIELD NOTES &nbsp;/&nbsp; ENTRY 03</p>
+    <div class="sheet-prose">
+    <h1 class="display h2" style="font-size:clamp(30px, 4.5vw, 48px); max-width:20ch;">What Hyper Automation Looks Like for Everyone</h1>
+    <p class="role-line">Field Notes | Development</p>
+
+    <figure class="post-hero">
+      <img src="/images/blog-images/gnomes.png" alt="Illustration accompanying the post" style="background-color: white">
+    </figure>
+    </div>
+  </section>
+
+  <!-- ARTICLE BODY -->
+  <section class="sheet no-via">
+    <div class="sheet-prose">
+    <div class="notes-list" style="padding-left:0; display:flex; flex-direction:column; gap:22px;">
+      <p class="drop-cap">Insert Twilight Zone music.</p>
+
+      <p><i>Imagine a world, if you will, in which the coffee is made the moment your Oura ring decides you have woken up. Your schedule shifts to match. Meetings that score below a certain priority threshold quietly become emails. Your day has been... AUTOMATED.</i></p>
+
+      <p>A ridiculous example. Also an entirely buildable one, right up until the morning you wake up ninety seconds late and your calendar cancels on a client.</p>
+
+      <h2 class="post-subhead">A less ridiculous example</h2>
+
+      <p>For real this time. Take a transfer student applying to a university.</p>
+
+      <p>The application lands. Documents get classified and routed on arrival instead of sitting in a shared inbox. Transcripts from other institutions, each with their own formatting and course naming and credit conventions, get translated into something the systems can actually read. Equivalencies get proposed against the course catalog. A record gets created, financial aid gets a trigger, the student gets a status update that reflects reality rather than a form letter, and an evaluator opens a queue where the work is already staged and the ambiguous cases are flagged.</p>
+
+      <p>None of those steps is impressive alone, in fact they're expected at this point in my opinion. Document classification is a solved problem. Record creation is an API call. The transcript translation piece is the only part that took real work, and applying machine learning and generative AI to it cut the processing effort by roughly 98%.</p>
+
+      <p>What makes it hyper automation is that the steps know about each other. One automation saves somebody an afternoon a week. A chain of them changes what a department does all day, because the handoffs disappear along with the tasks. The evaluator stops being a router and starts being an evaluator.</p>
+
+      <p>The decisions stay manual, because that's what keeps us special and employed. In all seriousness AI can't be trusted with important decisions. Nothing in that chain decides whether a course transfers. That call belongs to the people whose job it is, because a student's degree plan is a bad place to find out your model was confident and wrong. The chain removes the toil, which is the work with a correct answer that nobody enjoys producing, and leaves the judgment where a person can own it. Get that line wrong and you have built the Oura ring canceling your client meeting, just with worse consequences.</p>
+
+      <h2 class="post-subhead">The same shape, but a much faster clock</h2>
+
+      <p>The same shape shows up in a contact center, which is where I ran into it first.</p>
+
+      <p>Much to the agent's chagrin, A call arrives. Before anybody even picks up, or maybe even before the client hears an option in the IVR, the ANI resolves against the CRM, open cases and recent orders get pulled, account state gets checked. Routing and IVR menus take shape based on what is already known rather than on what the caller can be made to type, so a customer with one open ticket goes to the person who owns it instead of navigating four menus to say so. The agent's screen opens with the record already loaded and the last interaction summarized. During the conversation, the transcript feeds sentiment and intent detection. Afterward, disposition and case notes get drafted from the transcript, the CRM gets updated, follow-up tasks get created, and anything matching a known pattern gets flagged for QA review.</p>
+
+      <p>Again, these pieces might be less impressive on their own. A CRM lookup is a Function call, a Screen pop is a standard capability, and so on. What changes the operation is the composition: the caller stops repeating themselves, the agent stops alt-tabbing, and after-call work shrinks from a task into a review step. Handle time moves because the work moved, not because anyone was told to talk faster.</p>
+
+      <p>And the same boundary applies. The agent still decides whether to issue the refund. The system prepares the decision, surfaces what is relevant, and drafts the record afterward. It does not make the call that somebody has to answer for later.</p>
+
+      <h2 class="post-subhead">When the chain starts measuring itself</h2>
+
+      <p>Both of those are still just task removal, though. The part that actually earns the "hyper" is what happens once the chain starts measuring itself.</p>
+
+      <p>Every run through that transcript pipeline knows things. How long it took. How long the manual version took. Where it stalled and for how long. Multiply that by volume and you are no longer estimating recovered capacity, you are counting it. Forty minutes of staff time per transcript, times the eleven hundred that arrive between May and August, is a number you can put in a budget conversation instead of a number you defend with a feeling.</p>
+
+      <p>Once you can count it, you can forecast with it. The system knows its own throughput, so it knows whether the queue clears before orientation. Nobody has to notice that transfer evaluations are running behind, because the alert fires on day four of a slip rather than in week three when an advisor escalates. The status question stops being something a person assembles and starts being something the pipeline answers continuously.</p>
+
+      <p>Then it starts allocating. If the model says the evaluation queue needs two people next week and four the week after, that is a staffing decision the system can propose and a calendar can hold. In the contact center version it is the same math with a faster clock: predicted volume by interval, driven by actual routing and handle data instead of last year's spreadsheet, feeding schedules and time-off approvals and whether you need to flex a queue at two in the afternoon. Reserve the capacity where the work is going to be, not where it was last quarter.</p>
+
+      <p>What that does to the org chart is the part people miss. A meaningful share of management is information logistics: finding out where things stand, aggregating it, relaying it upward, deciding who works on what this week. That work does not vanish, but it stops being a person's calendar. Managers stop assembling status and start acting on it, which is the job they were actually hired to do. Fewer standups exist to answer questions the system already answered.</p>
+
+      <p>That is the version worth aiming at. Not a department where nobody works, but one where the throughput is visible, the capacity is planned against real numbers, the exceptions surface on their own, and the people are pointed at the exceptions instead of the queue.</p>
+
+      <p>It is also the version where the failure modes get expensive, which is why the boundary from earlier holds all the way up the stack. A system that schedules staff off a bad forecast is worse than a spreadsheet, because at least nobody trusts the spreadsheet. Everything above depends entirely on what is underneath it being sound.</p>
+
+      <h2 class="post-subhead">What has to be true first</h2>
+
+      <p>So the reason to treat hyper automation as something to aim at rather than something to implement is that the aiming is what forces you to fix the environment first. Automation on top of systems that were not ready produces faster wrong answers. If it is the target, then a handful of things have to be true before any of it works, and these are the ones I would put on the list.</p>
+
+      <p><strong style="font-family:'Space Mono',monospace; color:var(--paper);">Clean, properly normalized data.</strong> Everything downstream inherits the quality of what it reads. If the same person exists three times under slightly different names, or a value is maintained in four places and drifts, no amount of automation on top will fix it. It will distribute the problem faster and to more people. Normalization is not academic housekeeping, it is the difference between a system you can reason about and one you can only work around. I wrote about the tradeoffs between normalizing and denormalizing <a href="https://tayloratreece.medium.com/normalization-and-denormalization-in-a-database-e72ea31eb0f5" target="_blank" rel="noopener noreferrer" style="color:var(--accent);">over here</a>, because the answer is not always "normalize harder."</p>
+
+      <p><strong style="font-family:'Space Mono',monospace; color:var(--paper);">APIs that are predictable and legible.</strong> Consistent naming, consistent shapes, consistent error handling, and documentation that lives with the endpoint instead of in a wiki somebody last touched two years ago. The Python convention of a docstring sitting directly under the definition is the right instinct: the explanation and the thing being explained stay together, so they are hard to let drift apart. This was always good practice. It stops being optional the moment something other than a human is consuming your output, because an agent cannot ask a coworker what a field actually means.</p>
+
+      <p><strong style="font-family:'Space Mono',monospace; color:var(--paper);">MCP servers stood up and ready.</strong> If you want agents doing meaningful work against your systems, they need a defined way in, with a defined surface and defined permissions. Standing that up ahead of demand is much easier than retrofitting it under pressure while somebody asks why the pilot is behind schedule. Same argument as building an integration layer before you need one, which is to say the argument nobody wants to fund and everybody wishes they had.</p>
+
+      <p><strong style="font-family:'Space Mono',monospace; color:var(--paper);">Business outcomes stated plainly.</strong> What are we trying to move, and how will we know it moved. This is the one that gets skipped most often and the one that decides whether the rest was worth doing. Automation without a named outcome optimizes whatever is easiest to measure, which is rarely what mattered. Write it in a sentence somebody outside the room would understand, before the build.</p>
+
+      <p>What I like about that list is that none of it is really about automation. Clean data, predictable APIs, documented interfaces, clear goals. Every one is something you should want regardless, and every one pays for itself long before an agent touches anything. You are not betting on where the tooling lands in three years. The preparation is just good engineering with a better sales pitch.</p>
+
+      <h2 class="post-subhead">Where to start</h2>
+
+      <p>All of which means anyone can start, and small teams have the most to gain. When you have four developers and a hundred requests, every hour recovered is the difference between shipping and triaging. Find the spreadsheet that gets exported, edited, and re-uploaded. Find the copy-paste between two systems that both have APIs. Ask somebody what they do every week that they would call annoying, because they already know.</p>
+
+      <p>The goal was never a fully automated day. It is that the hours people spend get spent on the parts that need a person. Nobody has ever been promoted for retyping a CSV.</p>
+    </div>
+    </div>
+  </section>
+
+  <!-- NAV BETWEEN ENTRIES -->
+  <section class="sheet no-via" style="padding-top:56px; padding-bottom:56px;">
+    <a href="/blogs/" class="stamp-link" style="display:inline-flex; align-items:center; gap:10px; font-family:'IBM Plex Mono', monospace; font-size:14px; letter-spacing:0.04em; text-decoration:none; color:var(--muted);">
+      <span aria-hidden="true">←</span> Back to B-01 / Field Notes
+    </a>
+  </section>
+
+  <!-- BACK TO HOME -->
+  <section class="sheet no-via" style="padding-top:0; padding-bottom:56px; text-align:center;">
+    <a href="../index.html#overview" class="stamp-link" style="display:inline-flex; align-items:center; gap:10px; font-family:'IBM Plex Mono', monospace; font-size:14px; letter-spacing:0.04em; text-decoration:none; color:var(--muted);">
+      <span aria-hidden="true">←</span> Back to A-01 / Overview
+    </a>
+  </section>
+
+</main>
+
+<footer class="site-foot">
+  <p>© <span id="year"></span> Taylor Treece</p>
+  <p class="end-of-set">Sheet B-04</p>
+</footer>
+
+<script src="../js/main.js"></script>
+</body>
+</html>
