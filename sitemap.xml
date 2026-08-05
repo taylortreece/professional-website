@@ -21,6 +21,16 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://taylortreece.dev/blogs/hyper-automation-for-all</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://taylortreece.dev/blogs/internal-toolbox</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://taylortreece.dev/blogs/complexity-and-cx</loc>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
