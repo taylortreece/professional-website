@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wiring Agents Into On-Prem and Cloud APIs | Taylor Treece</title>
+<link rel="icon" type="image/png" href="../images/favicon.png">
+<meta name="description" content="A field note from Taylor Treece on scoping MCP work against hybrid environments, what the July 2026 spec revision changed for on-prem deployments, and why agents finally made the integration layer fundable.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Wiring Agents Into On-Prem and Cloud APIs">
+<meta property="og:description" content="Most organizations are hybrid, not cloud native. What that means for scoping MCP work, why identity is the whole game, and why the integration layer nobody would fund is suddenly fundable.">
+<meta property="og:url" content="https://taylortreece.dev/blogs/mcp-on-prem-and-cloud">
+<meta property="og:image" content="https://taylortreece.dev/images/blog-images/stairs.jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Wiring Agents Into On-Prem and Cloud APIs">
+<meta name="twitter:description" content="Most organizations are hybrid, not cloud native. What that means for scoping MCP work, why identity is the whole game, and why the integration layer nobody would fund is suddenly fundable.">
+<meta name="twitter:image" content="https://taylortreece.dev/images/blog-images/stairs.jpeg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/style.css">
+</head>
+<body>
+
+<div class="gridpaper" aria-hidden="true"></div>
+
+<header class="site-head">
+  <a href="/#overview" class="mark" aria-label="Taylor Treece, home">
+    <img src="../images/logo.png" alt="Taylor Treece" class="mark-logo">
+  </a>
+  <nav class="sheet-nav" id="primary-nav" aria-label="Primary">
+    <a href="../index.html#overview"><span class="sheet-no">U1</span>Overview</a>
+    <a href="../index.html#notes"><span class="sheet-no">U2</span>About</a>
+    <a href="../index.html#log"><span class="sheet-no">U3</span>Log</a>
+    <a href="../index.html#legend"><span class="sheet-no">U4</span>Legend</a>
+    <a href="../index.html#contact"><span class="sheet-no">U5</span>Contact</a>
+    <a href="/blogs/" style="color:var(--paper)"><span class="sheet-no">J1</span>Blog</a>
+  </nav>
+  <button class="nav-toggle" id="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-nav">
+    <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+  </button>
+</header>
+
+<main>
+
+  <!-- B-05 ENTRY -->
+  <section class="sheet sheet-overview no-via">
+    <p class="eyebrow">SHEET B-05 &nbsp;/&nbsp; FIELD NOTES &nbsp;/&nbsp; ENTRY 04</p>
+    <div class="sheet-prose">
+    <h1 class="display h2" style="font-size:clamp(30px, 4.5vw, 48px); max-width:20ch;">Wiring Agents Into On-Prem and Cloud APIs</h1>
+    <p class="role-line">Field Notes | Architecture</p>
+
+    <figure class="post-hero">
+      <img src="/images/blog-images/stairs.jpeg" alt="Photograph of a staircase">
+    </figure>
+    </div>
+  </section>
+
+  <!-- ARTICLE BODY -->
+  <section class="sheet no-via">
+    <div class="sheet-prose">
+    <div class="notes-list" style="padding-left:0; display:flex; flex-direction:column; gap:22px;">
+      <p class="drop-cap">Standing up your first MCP server takes about twenty minutes. Pick an SDK, define a tool, point it at something, watch an agent call it. The demo works, the room gets a little excited, and somebody asks how long it would take to do this against the systems the business actually runs on.</p>
+
+      <p>That is the question worth being ready for, because the honest answer depends almost entirely on things nobody wants to discuss in a demo. Where does the system live. Who is the agent acting as. What happens when it writes something. I have spent the last three years inside an environment where the answers were "a server down the hall," "nobody has decided," and "please do not."</p>
+
+      <p>So this is the architecture conversation as I would actually run it, plus a note at the end about why I think this is where a lot of implementation work is headed.</p>
+
+      <h2 class="post-subhead">Hybrid is the normal case</h2>
+
+      <p>There is a version of this discussion that assumes everything already sits in a cloud tenant with modern identity in front of it. For most organizations that is not the situation and will not be for years. What actually exists is some systems in a data center, some in the cloud, an identity provider bridging both, and a set of integrations somebody built under deadline pressure.</p>
+
+      <p>That hybrid state is not a failure to modernize. It is what a migration looks like from the inside, and it is the environment agents have to work against as it is rather than as anyone would like it to be. When I scope this kind of work, the first useful thing to establish is that MCP does not care where an API runs. It cares whether the agent can reach it, prove who it is acting for, and get back something predictable. Every hard decision downstream is a version of one of those three.</p>
+
+      <h2 class="post-subhead">What changed on July 28</h2>
+
+      <p>The Model Context Protocol published a new specification on July 28, 2026, and the maintainers called it the largest revision since launch. The headline change is that the protocol went stateless. The initialize handshake is gone, and so is the session header that used to pin a conversation to a specific server instance.</p>
+
+      <p>That sounds like a protocol detail and it is not, particularly if your infrastructure predates the cloud. Under the old model, a remote MCP server needed sticky sessions or shared session storage, because a request had to land on the instance that handled the handshake. Anyone who has tried to get that behavior out of an existing on-prem load balancer knows exactly what it costs in time and in goodwill. Now every request carries its own protocol version, client identity, and capabilities, so any request can land on any instance behind ordinary round-robin balancing with no shared state.</p>
+
+      <p>The routing change matters just as much in an enterprise network. Method and tool names now travel in HTTP headers rather than only inside the JSON body, which means an existing gateway, reverse proxy, WAF, or rate limiter can route and enforce policy on them directly. No deep packet inspection, no bespoke middleware, no long meeting explaining to a security team why their existing controls do not apply. That is a genuinely different conversation than it was six months ago.</p>
+
+      <p>If you are on the Microsoft stack, the C# SDK shipped a v2.0 aligned to the new revision, and Python, TypeScript, and Go updated alongside it. The prior version keeps working and the deprecated pieces carry a twelve month minimum window, so this is a migration to plan rather than an emergency. Worth knowing when someone asks whether to wait.</p>
+
+      <h2 class="post-subhead">The network boundary is the first real decision</h2>
+
+      <p>The agent usually runs somewhere you do not control. The API runs somewhere you very much do. Something has to bridge that, and the wrong answer is opening an inbound path to a core system because a pilot needed it this quarter.</p>
+
+      <p>The shape I would propose is to treat the MCP server as the only thing reachable from outside, sitting in front of APIs that stay unreachable. It lives at the edge, in a DMZ or behind an existing gateway, and it holds no data of its own. Internal systems keep exactly the exposure they have today. That framing also makes the pilot easy to approve, because if it gets cancelled you tear down one component instead of unwinding firewall rules somebody will find in an audit two years later.</p>
+
+      <p>For genuinely locked-down environments, an outbound-initiated tunnel is worth putting on the table, since a connection your network opens is a far easier approval than a port somebody else opens into it. Either way the principle holds: the agent talks to the MCP server, the MCP server talks to your APIs, and those are two separate trust decisions that deserve to be made separately.</p>
+
+      <p>This is the same reasoning behind splitting internal and vendor-facing APIs onto separate surfaces. An agent surface is a third boundary with its own threat model, and it earns its own front door for the same reason the other two did.</p>
+
+      <h2 class="post-subhead">Identity is the whole game</h2>
+
+      <p>The tempting shortcut is a service account with broad rights and a static key in an environment variable. It works immediately, demos beautifully, and quietly converts every access decision the organization has ever made into a single credential that can do anything on behalf of anyone. It is also the thing you will be asked about in the security review, so it is worth heading off in design rather than defending later.</p>
+
+      <p>The specification is direct about the alternative. An MCP server acts as an OAuth 2.1 resource server, not an authorization server. It validates short-lived, scoped tokens issued by the identity provider the organization already runs rather than minting its own. In a hybrid environment that is the right answer regardless, because it means agent access is governed by the same directory and the same groups that govern everything else. You are not standing up a parallel permission system that drifts from the real one within a year.</p>
+
+      <p>Three details to get right. Tokens should be bound to a specific resource, so a token minted for one MCP server cannot be replayed against another. Do not pass a token through to an upstream API: exchange it for one scoped to that downstream service, so a compromise at one hop does not become access to everything behind it. And the July revision hardened the flow further by requiring clients to validate the issuer before redeeming an authorization code, which closes a mix-up attack that was previously possible.</p>
+
+      <p>Worth taking seriously, because the ecosystem is not there yet. A May 2026 study of nearly eight thousand live remote MCP servers found roughly 40% exposed tools with no authentication mechanism at all, and another 29% relied on static tokens or API keys. Whatever you build is unlikely to be the weakest thing in the room, which is a low bar and a bad thing to aim at.</p>
+
+      <h2 class="post-subhead">An MCP server is not your API with a hat on</h2>
+
+      <p>The most common design mistake is mirroring the REST surface one to one. Forty endpoints become forty tools, the agent gets a catalog it cannot reason about, and every call asks the model to assemble something a developer would have needed documentation to assemble.</p>
+
+      <p>A tool is a task, not a route. "Look up a student's current enrollment status" is a tool. Six chained GETs and a join is not. If completing a common request takes an agent four calls in a fixed order, that sequence should have been one tool with a name that says what it does. You are designing an interface for a reader that cannot ask a coworker what a field means, which makes the tool description and the response shape the interface rather than documentation about it.</p>
+
+      <p>Keep the catalog small and curated. Fewer, well-named tools with clear descriptions beat exhaustive coverage every time, and the fastest way to make an agent unreliable is to hand it thirty plausible options for the same job. Same instinct as the agent desktop problem in a contact center: information density is not context.</p>
+
+      <p>Be deliberate about which tools write. Read access is recoverable. Write access is a decision about what an agent can do to production data on a Tuesday afternoon, and it deserves its own line in the scope document rather than arriving as a side effect of exposing a resource.</p>
+
+      <h2 class="post-subhead">Keep the human where the judgment is</h2>
+
+      <p>The new revision helps here. Multi Round-Trip Requests let a tool pause mid-call to ask for a confirmation or a missing parameter: the server returns a result flagged as needing input, and the client comes back with the answer attached. Previously that pattern required holding a stream open, which is exactly the kind of thing that does not survive a real network.</p>
+
+      <p>That gives you a clean way to encode the line between toil and judgment into the tool itself. The agent assembles everything, stages the work, and stops where a person needs to approve the thing that has consequences. Automate the retrieval and the formatting. Ask before the write that somebody will have to answer for later. It is also a much easier design to walk a nervous stakeholder through than a diagram of what the model promises not to do.</p>
+
+      <h2 class="post-subhead">Where the work is</h2>
+
+      <p>Here is the part I find genuinely interesting, and the reason I think this is worth more than a pilot.</p>
+
+      <p>Every organization I have worked in or sold into has a list of deferred integration work. Clean up the API surface. Consolidate identity. Retire the export that gets emailed on Fridays. Document the endpoints. That work has always been correct and almost never funded, because the business case was "things will be tidier," and tidier does not compete with a revenue project in a budget meeting.</p>
+
+      <p>Agents changed the shape of that argument. The same cleanup now has a visible payoff attached, and leadership is asking for the payoff directly. That does not make the work easier, but it makes it fundable, which was the actual blocker for the last decade.</p>
+
+      <p>The second thing that makes this attractive is that it does not require replacing anything. An MCP server is an adapter, and an adapter in front of a system nobody wants to touch is a much smaller ask than a migration. You are not proposing to rip out the platform that runs the business. You are proposing a curated surface in front of it, and the legacy system underneath goes on being a legacy system. That phases cleanly: one read-only tool, then a second, then the write path once trust exists, with each phase producing something usable rather than a milestone on a slide.</p>
+
+      <p>Which means the real deliverable is rarely the MCP server. It is the reachable API, the scoped credential, the identity model that finally got sorted, the documentation that finally got written because something other than a human had to read it. The protocol work is the small part. The modernization it justifies is the engagement, and it is the kind of work that leaves a client better off even in the scenario where the agent strategy changes underneath them.</p>
+
+      <h2 class="post-subhead">Where to start</h2>
+
+      <p>Pick one read-only tool against a system somebody already asks questions about. Put it behind the real identity provider on day one, because retrofitting auth after a successful pilot is a conversation nobody wins. Log every call with who requested it and what came back, since the first question after any incident is what the agent actually did, and "we are not sure" is an unpleasant answer to give a client.</p>
+
+      <p>Then leave it alone for a few weeks and watch what people try to do with it. The second tool is far easier to design once you have evidence instead of a roadmap, and the usage data is usually the strongest argument for funding phase two.</p>
+
+      <p>None of this is really about agents. Reachable APIs, centralized identity, scoped credentials, tools named after tasks, audit logs that answer questions. It is the same list it has always been. The agents just make it obvious which parts got skipped.</p>
+    </div>
+    </div>
+  </section>
+
+  <!-- NAV BETWEEN ENTRIES -->
+  <section class="sheet no-via" style="padding-top:56px; padding-bottom:56px;">
+    <a href="/blogs/" class="stamp-link" style="display:inline-flex; align-items:center; gap:10px; font-family:'IBM Plex Mono', monospace; font-size:14px; letter-spacing:0.04em; text-decoration:none; color:var(--muted);">
+      <span aria-hidden="true">←</span> Back to B-01 / Field Notes
+    </a>
+  </section>
+
+  <!-- BACK TO HOME -->
+  <section class="sheet no-via" style="padding-top:0; padding-bottom:56px; text-align:center;">
+    <a href="../index.html#overview" class="stamp-link" style="display:inline-flex; align-items:center; gap:10px; font-family:'IBM Plex Mono', monospace; font-size:14px; letter-spacing:0.04em; text-decoration:none; color:var(--muted);">
+      <span aria-hidden="true">←</span> Back to A-01 / Overview
+    </a>
+  </section>
+
+</main>
+
+<footer class="site-foot">
+  <p>© <span id="year"></span> Taylor Treece</p>
+  <p class="end-of-set">Sheet B-05</p>
+</footer>
+
+<script src="../js/main.js"></script>
+</body>
+</html>

@@ -21,6 +21,11 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://taylortreece.dev/blogs/mcp-on-prem-and-cloud</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://taylortreece.dev/blogs/hyper-automation-for-all</loc>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
