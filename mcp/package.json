@@ -1,12 +1,19 @@
 {
-  "name": "mcp",
+  "name": "taylor-treece-mcp",
   "version": "1.0.0",
-  "description": "",
-  "license": "ISC",
-  "author": "",
-  "type": "commonjs",
-  "main": "index.js",
+  "private": true,
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "content": "node scripts/build-content.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/server": "2.0.0",
+    "agents": "latest",
+    "zod": "^4.0.0"
+  },
+  "devDependencies": {
+    "wrangler": "latest"
   }
 }
