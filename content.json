@@ -1,0 +1,166 @@
+{
+  "generatedAt": "2026-08-08T18:34:21.279Z",
+  "person": {
+    "name": "Taylor Treece",
+    "title": "Director of Applications and Integrations",
+    "location": "Hattiesburg, MS",
+    "site": "https://taylortreece.dev",
+    "linkedin": "https://www.linkedin.com/in/taylor-treece-dev/",
+    "summary": "Solutions-focused technical leader working across enterprise application development, systems integration, and AI-driven automation. Currently directing a cloud SIS migration and eight vendor integrations in higher education. Previously pre-sales and solutions consulting on cloud contact center platforms."
+  },
+  "experience": [
+    {
+      "title": "Director of Applications and Integrations",
+      "org": "William Carey University",
+      "start": "2025",
+      "end": "Present",
+      "technologies": [
+        "ASP.NET",
+        "C#",
+        "Python",
+        "SQL Server",
+        "CI/CD",
+        "SIS"
+      ],
+      "summary": "Leads the migration from an on-prem to a cloud-based Student Information System and directs eight new third-party vendor integrations alongside it. Leads a four-person team and reports system status and risk directly to executive leadership and the board. Cleaned up three legacy platforms and set team standards for source control, CI/CD, and documentation."
+    },
+    {
+      "title": "Senior Programmer",
+      "org": "William Carey University",
+      "start": "2024",
+      "end": "2025",
+      "technologies": [
+        "Blazor",
+        "ASP.NET",
+        "IIS",
+        "SQL Server",
+        "REST APIs"
+      ],
+      "summary": "Built a centralized internal tools platform on Blazor, ASP.NET APIs, and IIS that departments across campus use instead of one-off spreadsheets and scripts. Ran technical discovery and solution design for new vendor implementations, defining data models, integration patterns, and system boundaries."
+    },
+    {
+      "title": "Software Analyst",
+      "org": "William Carey University",
+      "start": "2023",
+      "end": "2024",
+      "technologies": [
+        "ASP.NET 7",
+        "REST APIs",
+        "Machine Learning",
+        "Generative AI"
+      ],
+      "summary": "Built RESTful APIs on ASP.NET 7 connecting academic and administrative systems that had not previously exchanged data. Applied machine learning and generative AI to automate transcript translation, cutting processing effort by roughly 98%."
+    },
+    {
+      "title": "Solutions Developer / Pre-Sales CX",
+      "org": "Waterfield Technologies",
+      "start": "2022",
+      "end": "2023",
+      "technologies": [
+        "Twilio Flex",
+        "React",
+        "Redux",
+        "Node.js",
+        "CCaaS"
+      ],
+      "summary": "Designed and demoed twelve custom CCaaS environments on Twilio Flex, React, and Node.js, with more than 80% converting to follow-on phases. Ran discovery, wrote SOWs, and built estimates and pricing models. Stepped into a failing client engagement, ran a fast re-discovery and redesign, and kept the contract alive for two additional phases. Built deployment tooling that cut environment setup time by about eight hours."
+    }
+  ],
+  "projects": [
+    {
+      "id": "internal-toolbox",
+      "name": "Internal tools platform",
+      "org": "William Carey University",
+      "detail": "A Blazor front end sitting in front of two separate ASP.NET Web APIs, backed by SQL Server, with authorization driven by existing directory group membership. Built on prem because that is where the institution was, but structured so on prem was a deployment target rather than an assumption baked into the code: the front end talks to APIs over HTTP rather than reaching into a database directly, environment specifics live in configuration, and data access goes through the API layer. The two-API split separates internal tooling from vendor integrations, making the trust boundary structural rather than a convention a developer has to remember. Front end and API were saved as templates in source control so new tools start as a fork and inherit the same wiring and conventions."
+    },
+    {
+      "id": "transcript-automation",
+      "name": "Transcript evaluation automation",
+      "org": "William Carey University",
+      "detail": "Transfer students arrive with transcripts from other institutions, each with its own formatting, terminology, and credit conventions. Applying machine learning and generative AI to the translation step cut processing effort by roughly 98%. Deliberately scoped: the system does not decide whether a course transfers. That judgment stayed with the people whose job it is."
+    },
+    {
+      "id": "ccaas-deployments",
+      "name": "CCaaS environments on Twilio Flex",
+      "org": "Waterfield Technologies",
+      "detail": "Twelve custom contact center environments designed, built, and demoed across Studio flows, TaskRouter configuration, and custom Flex plugins. More than 80% converted to follow-on phases. Included one rescued engagement: a fast round of re-discovery found where scope had drifted from what the client needed, and the redesign kept the contract alive for two more phases."
+    }
+  ],
+  "skills": {
+    "Software Engineering": [
+      "C#",
+      "ASP.NET",
+      "ASP.NET Core",
+      "Blazor",
+      "Python",
+      "SQL Server",
+      "REST APIs",
+      "JavaScript",
+      "React",
+      "Node.js"
+    ],
+    "Architecture & Integrations": [
+      "Enterprise architecture",
+      "Solutions architecture",
+      "API architecture",
+      "Cloud architecture",
+      "ERP/CRM/SIS integrations",
+      "Salesforce"
+    ],
+    "AI & Automation": [
+      "Generative AI",
+      "Agentic and multi-agent systems",
+      "MCP",
+      "Conversational AI",
+      "Intent recognition",
+      "Intelligent routing"
+    ],
+    "CX & Contact Center": [
+      "CCaaS architecture",
+      "Contact center design",
+      "Workflow orchestration",
+      "Twilio Flex",
+      "Demo environment design"
+    ],
+    "Consulting & Pre-Sales": [
+      "Technical discovery",
+      "SOW development",
+      "Estimation",
+      "Proposal and RFP development",
+      "Solution design",
+      "Stakeholder workshops"
+    ]
+  },
+  "posts": [
+    {
+      "slug": "complexity-and-cx",
+      "title": "Scope Is the Design Work",
+      "description": "A field note from Taylor Treece on discovering real scope, holding it against reasonable pressure, and the delivery practices that protect both simplicity and ROI in CCaaS work.",
+      "url": "https://taylortreece.dev/blogs/complexity-and-cx",
+      "sections": [],
+      "body": "Building to scope is table stakes. Any competent delivery team can execute a signed SOW. The harder skill, and the one that decides whether an engagement is actually good, is shaping that scope in the first place and then holding it while a dozen reasonable people try to grow it.\n\nI spent a year at Waterfield Technologies on both halves of that: discovery sessions, SOWs, estimates and pricing models, then the build itself. Studio flows, TaskRouter configuration, custom Flex plugins, the integration layer underneath. Twelve deployments, more than 80% of which went on to a follow-on phase. The ones that went well were not the ones where I built the most.\n\nScope discovery is not a requirements-gathering meeting. Ask a stakeholder what they want and you get a wish list assembled from vendor decks and whatever frustrated them last quarter. Ask a supervisor to walk you through their three highest-volume interaction types end to end and you get the actual operation: where agents hesitate, which panels they ignore, which numbers they check every morning, which reports nobody has opened since onboarding. That second conversation is the one that should shape the SOW, because a document built from a wish list specifies features while the operation needs a workflow.\n\nOnce it is signed, the rest of the job is holding the line, and there are two reasons to do that. They are worth stating separately because they persuade different people in the room. The first is simplicity: every additional component is another thing to maintain, another thing that breaks when a queue gets renamed, another artifact whose definition of \"handled\" quietly diverges from the platform's. The second is ROI: hours spent on work that does not move an operational number are hours the client paid for and did not need. Their value drops and your margin drops at the same time.\n\nIn practice, holding scope starts with reaching for code earlier than feels natural. A Studio flow can hand off at nearly any node: a Function, a webhook, whatever service you point it at. When a routing decision got complicated, the path of least resistance was often another menu or some intermediate step that pushed work onto the caller or the agent. Menu depth is usually a symptom of decisioning that belonged behind the flow. Let the code do the ANI lookup, query the CRM for open cases, check account state, and route on what you already know. Every level resolved programmatically is a level nobody has to navigate, mis-key, abandon, or zero out of into a queue that was never scoped to receive it. That is also how tailored work stays contained: the tailoring lives in a Function you can read in one sitting instead of twelve more widgets on a canvas.\n\nWhich is the broader point about these platforms. Flex, Studio, and every other CCaaS builder ship with a drag-and-drop canvas, and it is easy to read that as permission to stop thinking like an engineer. The canvas changes the syntax, not the rules. Two practices carry most of the weight. Do not take five steps to do something that takes one: a widget chain that fetches a value, writes it to flow variables, hands it to a subflow, then re-reads it downstream is four places to break and four places the next consultant has to trace. And keep a single source of truth. The pattern I hit most often was the same customer attribute pulled fresh at three separate points, or maintained in both the CRM and a Flex worker attribute, or recalculated on every task instead of resolved once and passed forward. Duplicated state drifts whether it lives in a repository or on a canvas, and once it drifts nobody can tell you which copy is authoritative.\n\nReporting is where this gets expensive fastest. Nearly every engagement produced a list of custom reports and dashboards longer than what the operation ended up using. Some of it is necessary. A large share is already in native historical reporting or derivable from data the platform captures anyway, so building it means standing up a second pipeline for numbers that already exist somewhere authoritative. Same single-source problem, much larger surface area, and it eats exactly the hours that should have gone to routing or integration. Scoping a report out is rarely telling a client no. Most of the time it is pointing them at the thing that already answers the question.\n\nNone of this works if you sit on it. When something starts growing past what was scoped, raise it the day you notice, not the week before UAT. Tell the PM the estimate is drifting and why. Tell the implementation consultant what the flow is turning into. Tell the client what a request costs in hours and what it displaces, plainly, because most of the time they are asking for an outcome and are perfectly willing to reach it a cheaper way. The engagements that went sideways on me went sideways quietly. One I stepped into had drifted far enough from what the client actually needed that it was close to being lost. A fast round of re-discovery and a redesign brought it back, and it ran two more phases. That was recoverable, but only because somebody finally said something out loud.\n\nWhen a request is legitimate but does not belong in this phase, put it in the next one. Phasing is not a stalling tactic. It is how a go-live date stays credible while the request still gets taken seriously. It also sorts real needs from enthusiasm: a surprising number of must-haves quietly fall off the phase-two list once the operation has lived with the phase-one build for a month.\n\nThe connective tissue in all of it is building intuitively and asking questions when the intuition does not fire. If a flow is getting hard to explain out loud, it is too complicated. If you cannot name which operational number a component moves, go ask someone who can. If you are guessing at how a workflow runs, you are guessing at scope, and that guess surfaces later as either a change request or an agent quietly working around your build eight hours a day. The instinct to ask one more question in discovery is worth more than any amount of build speed after it."
+    },
+    {
+      "slug": "hyper-automation-for-all",
+      "title": "What Hyper Automation Looks Like for Everyone",
+      "description": "A field note from Taylor Treece on what hyper automation actually looks like when it works, and the four things that have to be true before any of it does.",
+      "url": "https://taylortreece.dev/blogs/hyper-automation-for-all",
+      "sections": [
+        "A less ridiculous example",
+        "The same shape, faster clock",
+        "When the chain starts measuring itself",
+        "What has to be true first",
+        "Where to start"
+      ],
+      "body": "Imagine a world, if you will, in which the coffee is made the moment your Oura ring decides you have woken up. Your schedule shifts to match. Meetings that score below a certain priority threshold quietly become emails. Your day has been... AUTOMATED.\n\nA ridiculous example. Also an entirely buildable one, right up until the morning you wake up ninety seconds late and your calendar cancels on a client.\n\nHere is a less ridiculous one. Take a transfer student applying to a university.\n\nThe application lands. Documents get classified and routed on arrival instead of sitting in a shared inbox. Transcripts from other institutions, each with their own formatting and course naming and credit conventions, get translated into something the systems can actually read. Equivalencies get proposed against the course catalog. A record gets created, financial aid gets a trigger, the student gets a status update that reflects reality rather than a form letter, and an evaluator opens a queue where the work is already staged and the ambiguous cases are flagged.\n\nNone of those steps is impressive alone. Document classification is a solved problem. Record creation is an API call. The transcript translation piece is the only part that took real work, and applying machine learning and generative AI to it cut the processing effort by roughly 98%.\n\nWhat makes it hyper automation is that the steps know about each other. One automation saves somebody an afternoon a week. A chain of them changes what a department does all day, because the handoffs disappear along with the tasks. The evaluator stops being a router and starts being an evaluator.\n\nNotice what stays manual. Nothing in that chain decides whether a course transfers. That call belongs to the people whose job it is, because a student's degree plan is a bad place to find out your model was confident and wrong. The chain removes the toil, which is the work with a correct answer that nobody enjoys producing, and leaves the judgment where a person can own it. Get that line wrong and you have built the Oura ring canceling your client meeting, just with worse consequences.\n\nThe same shape shows up in a contact center, which is where I ran into it first.\n\nA call arrives. Before anybody picks up, the ANI resolves against the CRM, open cases and recent orders get pulled, account state gets checked. Routing happens on what is already known rather than on what the caller can be made to type, so a customer with one open ticket goes to the person who owns it instead of navigating four menus to say so. The agent's screen opens with the record already loaded and the last interaction summarized. During the conversation, the transcript feeds sentiment and intent detection. Afterward, disposition and case notes get drafted from the transcript, the CRM gets updated, follow-up tasks get created, and anything matching a known pattern gets flagged for QA review.\n\nAgain, none of those pieces is exotic on its own. A CRM lookup is a Function call. Screen pop is a standard capability. What changes the operation is the composition: the caller stops repeating themselves, the agent stops alt-tabbing, and after-call work shrinks from a task into a review step. Handle time moves because the work moved, not because anyone was told to talk faster.\n\nAnd the same boundary applies. The agent still decides whether to issue the refund. The system prepares the decision, surfaces what is relevant, and drafts the record afterward. It does not make the call that somebody has to answer for later.\n\nBoth of those are still just task removal, though. The part that actually earns the \"hyper\" is what happens once the chain starts measuring itself.\n\nEvery run through that transcript pipeline knows things. How long it took. How long the manual version took. Where it stalled and for how long. Multiply that by volume and you are no longer estimating recovered capacity, you are counting it. Forty minutes of staff time per transcript, times the eleven hundred that arrive between May and August, is a number you can put in a budget conversation instead of a number you defend with a feeling.\n\nOnce you can count it, you can forecast with it. The system knows its own throughput, so it knows whether the queue clears before orientation. Nobody has to notice that transfer evaluations are running behind, because the alert fires on day four of a slip rather than in week three when an advisor escalates. The status question stops being something a person assembles and starts being something the pipeline answers continuously.\n\nThen it starts allocating. If the model says the evaluation queue needs two people next week and four the week after, that is a staffing decision the system can propose and a calendar can hold. In the contact center version it is the same math with a faster clock: predicted volume by interval, driven by actual routing and handle data instead of last year's spreadsheet, feeding schedules and time-off approvals and whether you need to flex a queue at two in the afternoon. Reserve the capacity where the work is going to be, not where it was last quarter.\n\nWhat that does to the org chart is the part people miss. A meaningful share of management is information logistics: finding out where things stand, aggregating it, relaying it upward, deciding who works on what this week. That work does not vanish, but it stops being a person's calendar. Managers stop assembling status and start acting on it, which is the job they were actually hired to do. Fewer standups exist to answer questions the system already answered.\n\nThat is the version worth aiming at. Not a department where nobody works, but one where the throughput is visible, the capacity is planned against real numbers, the exceptions surface on their own, and the people are pointed at the exceptions instead of the queue.\n\nIt is also the version where the failure modes get expensive, which is why the boundary from earlier holds all the way up the stack. A system that schedules staff off a bad forecast is worse than a spreadsheet, because at least nobody trusts the spreadsheet. Everything above depends entirely on what is underneath it being sound.\n\nSo the reason to treat hyper automation as something to aim at rather than something to implement is that the aiming is what forces you to fix the environment first. Automation on top of systems that were not ready produces faster wrong answers. If it is the target, then a handful of things have to be true before any of it works, and these are the ones I would put on the list.\n\nClean, properly normalized data. Everything downstream inherits the quality of what it reads. If the same person exists three times under slightly different names, or a value is maintained in four places and drifts, no amount of automation on top will fix it. It will distribute the problem faster and to more people. Normalization is not academic housekeeping, it is the difference between a system you can reason about and one you can only work around. I wrote about the tradeoffs between normalizing and denormalizing over here , because the answer is not always \"normalize harder.\"\n\nAPIs that are predictable and legible. Consistent naming, consistent shapes, consistent error handling, and documentation that lives with the endpoint instead of in a wiki somebody last touched two years ago. The Python convention of a docstring sitting directly under the definition is the right instinct: the explanation and the thing being explained stay together, so they are hard to let drift apart. This was always good practice. It stops being optional the moment something other than a human is consuming your output, because an agent cannot ask a coworker what a field actually means.\n\nMCP servers stood up and ready. If you want agents doing meaningful work against your systems, they need a defined way in, with a defined surface and defined permissions. Standing that up ahead of demand is much easier than retrofitting it under pressure while somebody asks why the pilot is behind schedule. Same argument as building an integration layer before you need one, which is to say the argument nobody wants to fund and everybody wishes they had.\n\nBusiness outcomes stated plainly. What are we trying to move, and how will we know it moved. This is the one that gets skipped most often and the one that decides whether the rest was worth doing. Automation without a named outcome optimizes whatever is easiest to measure, which is rarely what mattered. Write it in a sentence somebody outside the room would understand, before the build.\n\nWhat I like about that list is that none of it is really about automation. Clean data, predictable APIs, documented interfaces, clear goals. Every one is something you should want regardless, and every one pays for itself long before an agent touches anything. You are not betting on where the tooling lands in three years. The preparation is just good engineering with a better sales pitch.\n\nAll of which means anyone can start, and small teams have the most to gain. When you have four developers and a hundred requests, every hour recovered is the difference between shipping and triaging. Find the spreadsheet that gets exported, edited, and re-uploaded. Find the copy-paste between two systems that both have APIs. Ask somebody what they do every week that they would call annoying, because they already know.\n\nThe goal was never a fully automated day. It is that the hours people spend get spent on the parts that need a person. Nobody has ever been promoted for retyping a CSV."
+    },
+    {
+      "slug": "internal-toolbox",
+      "title": "Building a Toolbox on Thirty Years of On-Prem",
+      "description": "A field note from Taylor Treece on building an on-prem internal tools platform with Blazor, ASP.NET, and SQL Server, designed to move to the cloud when the institution was ready.",
+      "url": "https://taylortreece.dev/blogs/internal-toolbox",
+      "sections": [],
+      "body": "A lot of institutions are running on a Student Information System that predates most of the people using it. The one I inherited had been in place for decades, and everything built since had been built the way you built things at the time: inside the vendor platform, with custom tables added alongside the vendor's own, on servers in a room down the hall. Years of one-off tools, reports, and utilities that departments used daily and that worked.\n\nThat is not a story about anyone making bad calls. It is a story about what was available. When those decisions were made there was no in-house web development practice to build against, no cloud to move to, and no reason to think the vendor platform was a risky place to put things. Each layer got added on top of the one before it because that was the surface that existed. Anyone who has worked in higher ed IT, or in any institution older than the software it runs on, has watched the same accumulation happen.\n\nWhat had changed was the horizon. A cloud SIS migration was coming. Custom tables sitting in a vendor's database and tools living inside a vendor's interface do not travel well, and the closer that migration got, the more expensive they would be to unwind. The question was not whether to deal with it. It was whether that work would happen under a go-live deadline or ahead of one.\n\nSo I built the toolbox. Blazor front end, ASP.NET Web APIs behind it, SQL Server underneath, authorization driven by existing directory group membership. All of it running on prem, because that is where the institution was, and all of it built so that on prem was a deployment target rather than an assumption baked into the code.\n\nThat last part drove most of the technical decisions. The front end talks to APIs over HTTP rather than reaching into a database directly. Environment specifics live in configuration rather than in the code. Data access goes through the API layer instead of being scattered across the UI. None of that is exotic, and all of it is ordinary practice anywhere that has been doing web development for a while. It mattered here because the same application that runs on a server down the hall can run somewhere else later without being rewritten, which meant the institution would not have to make the cloud decision and the rebuild decision at the same time.\n\nI split the API layer in two: one for internal tooling, one for vendor integrations. Those are different trust boundaries and they earn different surfaces. Serving both from a single API with route-level filtering would have saved setup time and cost more later, because every endpoint added afterward would have to correctly identify which side of the boundary it belonged on. Two separate APIs makes that boundary structural rather than something a developer has to remember, and the separation is enforced by what exists on each surface instead of by convention.\n\nAuthorization leans on the directory the institution already ran. Group membership determines which tools a person sees, with separate administrative groups layered on top. The useful consequence is that access is not managed inside the application at all. It is managed where it already was, by the people who already did it. Granting someone access to a department's tooling is a group membership change rather than a ticket to my team, and access ends when their account does. Homegrown permission systems usually get the granting right and the revoking wrong.\n\nSQL Server holds everything, but in a database of our own rather than as additional tables inside the vendor's. That distinction is most of the point. Same data, same server room, but on a footprint the institution could back up, migrate, or restructure on its own schedule.\n\nThe other decision I would make again on day one was saving the front end and the API as templates in source control. A new front end or a new API starts as a fork instead of a blank project. The time savings are real but secondary. What matters is that the tenth thing built on the platform has the same wiring, the same structure, and the same conventions as the first, whether or not I am the one building it. Platforms decay when every addition is a slightly different reading of the pattern, and making the pattern forkable is the cheapest defense against that I know.\n\nTwo goals drove the whole effort. The first was tools that belong to the institution: independent of any one vendor's platform, able to survive a migration, changeable on our schedule. The second was laying groundwork for hyperautomation, and the first is a prerequisite for the second. Automating across systems is difficult when the automation logic is a tenant inside one of them. Once tools sit on infrastructure the institution controls, with its own APIs and its own data layer, automation becomes a matter of composing things you already own.\n\nThis was never a rewrite-everything project and it should not have been. Those older tools work, and people depend on them. The toolbox started with what hurt most and grew from there. What changed immediately was not how much had moved. It was that there was finally somewhere else for the next tool to go."
+    }
+  ]
+}
